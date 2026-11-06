@@ -16,3 +16,16 @@
 - 👤 [Explore the creator's projects](https://go.ondev.store/zarukihp).
 - 🌍 [Create with OMGithub](https://go.ondev.store/).
 <!-- omgithub:readme:end -->
+
+## Valle Manzano
+
+Prototipo narrativo de granja, vida comunitaria y misterio sobrenatural. Abre `index.html` en un navegador o inicia el servidor local con `./start.sh`.
+
+### Documentación
+
+- [Documento de diseño (GDD)](docs/GDD.md)
+- [Alcance y roadmap](docs/ALCANCE.md)
+- [Arquitectura y pseudocódigo](docs/ARQUITECTURA.md)
+- [QA y criterios de aceptación](docs/QA.md)
+- [Supuestos legales](docs/LEGAL.md)
+- [Esquemas JSON](docs/schemas/)

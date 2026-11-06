@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/cuaderno-cosecha/partida.schema.json",
+  "title": "Partida de Cuaderno & Cosecha",
+  "description": "Contrato documental para el estado guardado en localStorage. No se valida en tiempo de ejecución.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["day", "money", "energy", "maxEnergy", "time", "weather", "plots", "inventory", "relationships", "known", "entries", "evidence", "suspicion", "fear", "community", "justice", "devotion", "stability", "quests", "flags", "news", "tool", "selectedTarget", "visited", "lastNote", "tutorial"],
+  "properties": {
+    "day": { "type": "integer", "minimum": 1, "maximum": 28 },
+    "money": { "type": "integer", "minimum": 0 },
+    "energy": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "maxEnergy": { "type": "integer", "minimum": 1, "maximum": 100 },
+    "time": { "type": "number", "minimum": 6, "maximum": 25 },
+    "weather": { "type": "integer", "minimum": 0, "maximum": 3 },
+    "plots": {
+      "type": "array", "minItems": 6, "maxItems": 6,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["crop", "progress", "watered", "ready"],
+        "properties": {
+          "crop": { "type": ["string", "null"], "enum": ["turnip", "bean", "potato", "strawberry", "flower", "pumpkin", null] },
+          "progress": { "type": "integer", "minimum": 0 },
+          "watered": { "type": "boolean" },
+          "ready": { "type": "boolean" }
+        }
+      }
+    },
+    "inventory": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+    "relationships": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mara", "teo", "iris", "dario", "nerea", "basil", "luz", "elia", "sael"],
+      "properties": {
+        "mara": { "$ref": "#/$defs/affinity" }, "teo": { "$ref": "#/$defs/affinity" },
+        "iris": { "$ref": "#/$defs/affinity" }, "dario": { "$ref": "#/$defs/affinity" },
+        "nerea": { "$ref": "#/$defs/affinity" }, "basil": { "$ref": "#/$defs/affinity" },
+        "luz": { "$ref": "#/$defs/affinity" }, "elia": { "$ref": "#/$defs/affinity" }, "sael": { "$ref": "#/$defs/affinity" }
+      }
+    },
+    "known": { "type": "array", "uniqueItems": true, "items": { "enum": ["dario", "basil", "nerea", "iris", "luz"] } },
+    "entries": {
+      "type": "array", "maxItems": 12, "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "name", "cause", "day"],
+        "properties": {
+          "id": { "enum": ["dario", "basil", "nerea", "iris", "luz"] },
+          "name": { "type": "string", "minLength": 1 },
+          "cause": { "enum": ["public", "illness", "accident"] },
+          "day": { "type": "integer", "minimum": 1, "maximum": 28 }
+        }
+      }
+    },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "suspicion": { "$ref": "#/$defs/meter" }, "fear": { "$ref": "#/$defs/meter" },
+    "community": { "$ref": "#/$defs/meter" }, "justice": { "$ref": "#/$defs/meter" },
+    "devotion": { "$ref": "#/$defs/meter" }, "stability": { "$ref": "#/$defs/meter" },
+    "quests": {
+      "type": "object", "additionalProperties": false, "required": ["turnip", "clue", "sael"],
+      "properties": { "turnip": { "type": "boolean" }, "clue": { "type": "boolean" }, "sael": { "type": "boolean" } }
+    },
+    "flags": {
+      "type": "object", "additionalProperties": false, "required": ["intro", "radio", "festival", "lanterns", "ending"],
+      "properties": {
+        "intro": { "type": "boolean" }, "radio": { "type": "boolean" }, "festival": { "type": "boolean" }, "lanterns": { "type": "boolean" },
+        "ending": { "type": ["string", "null"], "enum": ["kira", "justice", "balance", "discovered", "renounce", null] }
+      }
+    },
+    "news": { "type": "array", "items": { "type": "string" } },
+    "tool": { "enum": ["plant", "water", "harvest"] },
+    "selectedTarget": { "type": ["string", "null"], "enum": ["dario", "basil", "nerea", "iris", "luz", null] },
+    "visited": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+    "lastNote": { "type": "string" }, "tutorial": { "type": "boolean" }
+  },
+  "$defs": {
+    "meter": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "affinity": { "$ref": "#/$defs/meter" },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "text", "source", "icon"],
+      "properties": { "title": { "type": "string" }, "text": { "type": "string" }, "source": { "type": "string" }, "icon": { "type": "string" } }
+    }
+  }
+}

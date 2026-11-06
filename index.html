@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#18251f" />
+  <title>Cuaderno y Cosecha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Cuaderno y Cosecha, inicio"><span class="brand-mark">✦</span><span>CUADERNO <i>&</i> COSECHA</span></a>
+      <div class="top-meta"><span class="weather"><b id="weather-icon">☀</b><span id="weather-label">Cielo despejado</span></span><span class="divider"></span><span class="season">☘ <b id="season-label">Primavera</b></span></div>
+      <div class="top-actions"><button class="icon-btn" id="sound-toggle" title="Activar o silenciar ambiente" aria-label="Silenciar">♫</button><button class="icon-btn" id="help-btn" title="Cómo jugar" aria-label="Cómo jugar">?</button><button class="avatar" id="profile-btn" aria-label="Perfil">M</button></div>
+    </header>
+    <div class="game-shell">
+      <aside class="sidebar">
+        <div class="day-card"><div class="day-top"><span id="weekday">LUNES</span><span class="moon">☾</span></div><div class="day-number"><strong id="day-number">01</strong><span>de 28</span></div><div class="time-line"><span>☼</span><div class="time-track"><i id="time-progress"></i></div><b id="time-label">06:00</b></div></div>
+        <div class="wallet-row"><span class="coin">✦</span><div><small>AHORROS</small><b id="money">240 <small>₲</small></b></div><button class="small-button" id="calendar-btn">▦</button></div>
+        <div class="energy-wrap"><div class="section-caption"><span>ENERGÍA</span><b id="energy-label">80 / 100</b></div><div class="energy-bar"><i id="energy-bar"></i></div><div class="energy-hint" id="energy-hint">Un día nuevo, todo por hacer.</div></div>
+        <div class="sidebar-label">TU JORNADA</div>
+        <nav class="main-nav" aria-label="Lugares">
+          <button class="nav-item active" data-view="farm"><span class="nav-ico">⌂</span><span>La granja</span><kbd>1</kbd></button>
+          <button class="nav-item" data-view="town"><span class="nav-ico">⌖</span><span>El pueblo</span><kbd>2</kbd></button>
+          <button class="nav-item" data-view="notebook"><span class="nav-ico">▤</span><span>El cuaderno</span><kbd>3</kbd><i class="nav-dot"></i></button>
+          <button class="nav-item" data-view="board"><span class="nav-ico">⌕</span><span>Investigación</span><kbd>4</kbd></button>
+          <button class="nav-item" data-view="people"><span class="nav-ico">♧</span><span>Relaciones</span><kbd>5</kbd></button>
+        </nav>
+        <div class="sidebar-bottom"><div class="mystery-card"><div class="mystery-head"><span>LA OTRA CARA</span><span class="eye">◉</span></div><p>El pueblo habla bajito.<br>Aprende a escuchar.</p><div class="fear-row"><span>Inquietud pública</span><b id="fear-label">12%</b></div><div class="mini-meter"><i id="fear-bar"></i></div></div><button class="sleep-button" id="sleep-btn"><span>☾</span> Terminar el día <b>↗</b></button></div>
+      </aside>
+      <main class="main-content">
+        <div class="mobile-summary"><span id="mobile-date">Día 1 · Primavera</span><span id="mobile-energy">⚡ 80</span><span id="mobile-money">✦ 240</span></div>
+        <section class="view active" id="view-farm">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> TU NUEVO COMIENZO</div><h1>Un lugar para <em>echar raíces.</em></h1><p class="subtitle">La primavera apenas empieza en Valle Manzano.</p></div><button class="weather-pill" id="weather-pill">☀ <span>Despejado · 18°</span><b>⌄</b></button></div>
+          <div class="farm-scene"><div class="scene-sun"></div><div class="scene-cloud cloud-one"></div><div class="scene-cloud cloud-two"></div><div class="scene-hills"></div><div class="scene-trees"><i>♣</i><i>♣</i><i>♣</i><i>♣</i><i>♣</i></div><div class="farmhouse"><div class="roof"></div><div class="house-body"><div class="window"></div><div class="door"></div><div class="window"></div></div><div class="chimney"></div></div><div class="scene-fence"></div><div class="scene-path"></div><div class="scene-caption"><span class="location-pin">⌖</span><div><b>GRANJA MANZANO</b><small>Tu hogar, desde hoy</small></div></div><div class="scene-weather-label">☀ &nbsp;18° <small>BRISA SUAVE</small></div></div>
+          <div class="farm-grid-head"><div><div class="eyebrow small-eyebrow">TIERRA FÉRTIL <span class="plot-count">· 6 parcelas</span></div><p class="tiny-note">Selecciona una parcela para cuidarla.</p></div><div class="tool-picker" id="tool-picker"><button class="tool active" data-tool="plant" title="Sembrar">✿ <span>Sembrar</span></button><button class="tool" data-tool="water" title="Regar">◌ <span>Regar</span></button><button class="tool" data-tool="harvest" title="Cosechar">⌁ <span>Cosechar</span></button></div></div>
+          <div class="plot-grid" id="plot-grid"></div>
+          <div class="farm-footer"><div class="inventory-strip"><span class="bag-icon">▣</span><div><small>EN TU BOLSA</small><div class="inventory-items" id="inventory-items"></div></div></div><button class="sell-button" id="sell-btn">Vender cosecha <span>→</span></button></div>
+        </section>
+        <section class="view" id="view-town">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> VALLE MANZANO</div><h1>La vida sigue <em>su curso.</em></h1><p class="subtitle">Un pueblo pequeño con historias largas.</p></div><div class="people-online"><span class="online-dot"></span><span id="town-count">6 vecinos fuera</span></div></div>
+          <div class="town-banner"><div class="town-sky">☁ <span>VALLE MANZANO</span><i>☀</i></div><div class="town-hill"></div><div class="town-village">⌂　⌂　⌂　⌂　⌂</div><div class="town-road"></div><div class="banner-note"><b>EL PUEBLO</b><span>La plaza está a un paseo.</span></div></div>
+          <div class="town-layout"><div class="place-list" id="place-list"></div><aside class="town-sidebar"><div class="notice-card"><div class="card-label">ÚLTIMA HORA <span>◉ RADIO LOCAL</span></div><div id="radio-news" class="radio-news"></div><button class="text-action" id="listen-radio">Escuchar boletín <span>→</span></button></div><div class="notice-card bulletin-card"><div class="card-label">TABLÓN DE AVISOS</div><div id="town-quest"></div><button class="text-action" data-go="board">Ver investigación <span>→</span></button></div></aside></div>
+        </section>
+        <section class="view" id="view-notebook">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line dark-line"></span> OBJETO NO IDENTIFICADO</div><h1>El cuaderno <em>de la arboleda.</em></h1><p class="subtitle">«El nombre escrito aquí encontrará su final.» — anotación en la primera página</p></div><div class="page-count">PÁGINAS <b id="pages-count">12</b><small>restantes</small></div></div>
+          <div class="notebook-layout"><div class="notebook-paper"><div class="paper-top"><span>ARCHIVO DEL OBSERVADOR</span><span>EDICIÓN I · 01</span></div><div class="paper-rule"></div><div class="rule-quote">Las páginas no revelan la verdad.<br>Solo <em>consecuencias.</em></div><p class="paper-copy">Para que una entrada tenga efecto, necesitas el nombre verdadero de una persona y haber visto su rostro. Cada decisión deja una huella en las vidas que siguen.</p><div class="paper-stats"><div><span>OBJETIVOS CONOCIDOS</span><b id="known-target-count">0 / 5</b></div><div><span>ENTRADAS REALIZADAS</span><b id="entry-count">0</b></div></div><div class="paper-warning">✦ <span>Lo que escribas no tiene vuelta atrás.</span></div></div><div class="notebook-work"><div class="panel-heading"><div><div class="eyebrow small-eyebrow">ELIGE CON CUIDADO</div><h2>Personas en tus notas</h2></div><span class="panel-count" id="notebook-targets-label">0 disponibles</span></div><div class="target-list" id="target-list"></div><div class="write-card" id="write-card"><div class="write-card-top"><span>✒</span><div><b>Una entrada, una consecuencia.</b><small>Investiga primero. No todos los rumores son ciertos.</small></div></div><label for="cause-select">INTENCIÓN EN EL RELATO</label><select id="cause-select"><option value="public">Salida repentina tras escándalo público</option><option value="illness">Misterio de salud inexplicable</option><option value="accident">Incidente fuera de escena</option></select><button class="write-button" id="write-btn" disabled>Escribir en el cuaderno <span>→</span></button><small class="fiction-note">Ficción sobrenatural · sin detalles gráficos</small></div></div></div>
+          <div class="shinigami-note"><span class="apple">◉</span><div><b>BRUMA, EL TESTIGO</b><p id="shinigami-line">«¿Tienes una manzana? Este lugar es incluso más aburrido de lo que parece.»</p></div><button id="bruma-btn">Pedir una pista <span>↗</span></button></div>
+        </section>
+        <section class="view" id="view-board">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> PISTAS, NO CERTEZAS</div><h1>El tablón <em>de rumores.</em></h1><p class="subtitle">Conecta hechos. El detective también está tomando notas.</p></div><div class="suspicion-chip"><span>◉</span><div><small>ATENCIÓN DEL DETECTIVE</small><b id="suspicion-label">0%</b></div><div class="suspicion-track"><i id="suspicion-bar"></i></div></div></div>
+          <div class="investigation-layout"><div class="evidence-column"><div class="panel-heading"><div><div class="eyebrow small-eyebrow">LO QUE HAS OÍDO</div><h2>Hilos de evidencia</h2></div><span class="panel-count" id="evidence-count">0 pistas</span></div><div class="evidence-list" id="evidence-list"></div><div class="lead-card"><span class="lead-icon">✦</span><div><b>Una pista no es una prueba.</b><p>Visita lugares, habla con la gente y mira las noticias para distinguir rumor de verdad.</p></div></div></div><div class="detective-card"><div class="detective-art">◉<span>?</span></div><div class="eyebrow small-eyebrow">EL OBSERVADOR</div><h2>Detective Sael</h2><p>Brillante, paciente y difícil de impresionar. Registra horarios y conexiones, pero no puede saber lo que no ha visto.</p><div class="detective-stat"><span>Hipótesis activas</span><b id="hypothesis-count">1</b></div><div class="detective-stat"><span>Próximo paso</span><b id="detective-step">Observar</b></div><div class="detective-quote">«Los patrones son más sinceros que las personas.»</div><button class="outline-button" id="detective-talk">Hablar con Sael <span>→</span></button></div></div>
+        </section>
+        <section class="view" id="view-people">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> QUIENES HACEN VALLE MANZANO</div><h1>Vidas <em>entrelazadas.</em></h1><p class="subtitle">La confianza crece en los pequeños momentos.</p></div><span class="panel-count" id="friend-count">0 amistades cercanas</span></div>
+          <div class="relationship-grid" id="relationship-grid"></div>
+        </section>
+        <footer class="game-footer"><span>CUADERNO & COSECHA <i>·</i> UNA HISTORIA DE VALLE MANZANO</span><span>GUARDADO LOCAL <b id="save-status">●</b></span></footer>
+      </main>
+      <aside class="right-rail"><div class="rail-title"><span>CUADERNO DE CAMPO</span><button id="journal-btn" title="Anotación del día">↗</button></div><div class="rail-date"><b id="rail-day">DÍA 01</b><span>PRIMAVERA · AÑO 1</span></div><div class="rail-note" id="daily-note"><span class="note-pin">✦</span><p>Las ventanas de la granja necesitan reparación. El pueblo parece amable… desde lejos.</p><small>NOTA DEL DÍA</small></div><div class="rail-divider"></div><div class="rail-section-head"><span>PRÓXIMAMENTE</span><button id="calendar-small">▦</button></div><div class="event-card"><span class="event-date">DÍA 07</span><b>Mercado de primavera</b><small>Plaza del pueblo · 10:00</small><span class="event-icon">✿</span></div><div class="event-card muted-event"><span class="event-date">DÍA 14</span><b>Noche de faroles</b><small>Plaza central · 19:00</small><span class="event-icon">☼</span></div><div class="rail-divider"></div><div class="rail-section-head"><span>RUMOR DEL PUEBLO</span><span class="pulse-dot"></span></div><div class="rumor-card" id="rail-rumor">«Alguien oyó pasos junto al santuario después de medianoche.»<small>— VECINA ANÓNIMA</small></div><div class="rail-bottom"><span class="tiny-shinigami">☻</span><span>Hay cosas que es mejor no preguntar.</span></div></aside>
+    </div>
+    <nav class="mobile-nav"><button class="active" data-view="farm"><span>⌂</span>Granja</button><button data-view="town"><span>⌖</span>Pueblo</button><button data-view="notebook"><span>▤</span>Cuaderno</button><button data-view="board"><span>⌕</span>Tablón</button><button data-view="people"><span>♧</span>Gente</button></nav>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true"><div class="modal" id="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modal-close" aria-label="Cerrar">×</button><div id="modal-content"></div></div></div>
+  <script src="game.js"></script>
+</body>
+</html>

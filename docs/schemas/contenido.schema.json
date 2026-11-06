@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/cuaderno-cosecha/contenido.schema.json",
+  "title": "Catálogos de contenido de Cuaderno & Cosecha",
+  "description": "Forma documental de los catálogos PEOPLE, TARGETS, CROPS, PLACES y WEATHER definidos en game.js.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["people", "targets", "crops", "places", "weather", "weekdays"],
+  "properties": {
+    "people": { "type": "array", "minItems": 9, "items": { "$ref": "#/$defs/person" } },
+    "targets": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/$defs/target" } },
+    "crops": { "type": "array", "minItems": 6, "maxItems": 6, "items": { "$ref": "#/$defs/crop" } },
+    "places": { "type": "array", "minItems": 8, "maxItems": 8, "items": { "$ref": "#/$defs/place" } },
+    "weather": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "$ref": "#/$defs/weather" } },
+    "weekdays": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "type": "string" } }
+  },
+  "$defs": {
+    "person": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "role", "face", "likes", "secret", "hours", "lines"],
+      "properties": {
+        "id": { "type": "string" }, "name": { "type": "string" }, "role": { "type": "string" },
+        "face": { "type": "string" }, "likes": { "type": "string" }, "secret": { "type": "string" },
+        "hours": { "type": "string" }, "lines": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    },
+    "target": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "role", "face", "proof", "guilty", "protected", "reason", "firstClue"],
+      "properties": {
+        "id": { "enum": ["dario", "basil", "nerea", "iris", "luz"] }, "name": { "type": "string" },
+        "role": { "type": "string" }, "face": { "type": "boolean" }, "proof": { "type": "string" },
+        "guilty": { "type": "boolean" }, "protected": { "type": "boolean" }, "reason": { "type": "string" }, "firstClue": { "type": "string" }
+      }
+    },
+    "crop": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "icon", "price", "days", "cost"],
+      "properties": {
+        "id": { "enum": ["turnip", "bean", "potato", "strawberry", "flower", "pumpkin"] },
+        "name": { "type": "string" }, "icon": { "type": "string" }, "price": { "type": "integer", "minimum": 0 },
+        "days": { "type": "integer", "minimum": 1 }, "cost": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "place": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "detail", "icon"],
+      "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "detail": { "type": "string" }, "icon": { "type": "string" } }
+    },
+    "weather": {
+      "type": "object", "additionalProperties": false,
+      "required": ["label", "icon", "pill"],
+      "properties": { "label": { "type": "string" }, "icon": { "type": "string" }, "pill": { "type": "string" } }
+    }
+  }
+}
