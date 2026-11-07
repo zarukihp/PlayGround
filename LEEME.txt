@@ -1,0 +1,38 @@
+CHRONICLE OF ASH: LA CIUDAD DE CENIZA
+Novela visual de misterio sobrenatural · Versión 1.0
+
+CONTENIDO DEL PAQUETE
+- index.html, game.js y style.css: versión HTML, jugable sin instalar motor.
+- assets/images/: arte original compartido con la versión web.
+- renpy_project/: proyecto fuente para Ren'Py 8.x (carpeta game, guion y recursos).
+- DOCUMENTACION.md: resumen ejecutivo, GDD, diagrama de flujo y condiciones de finales.
+- GUION_CAPITULO_1.md: recorrido narrativo del primer capítulo.
+- INVENTARIO_ASSETS.md: inventario y atribución de los recursos originales.
+- QA.md: checklist y límites de validación.
+
+JUGAR LA VERSIÓN HTML
+1. Extrae el ZIP manteniendo la estructura de carpetas.
+2. Abre index.html en un navegador moderno. No necesita servidor, dependencias ni conexión a internet.
+3. El guardado queda en el almacenamiento local del navegador actual. Para conservarlo, no borres los datos del sitio.
+4. Si el navegador bloquea recursos al abrir file://, inicia un servidor local desde la carpeta extraída, por ejemplo: python3 -m http.server 8000; abre http://localhost:8000.
+
+ABRIR EL PROYECTO REN'PY
+1. Instala Ren'Py 8.x desde el sitio oficial renpy.org.
+2. Extrae el paquete.
+3. En el Launcher de Ren'Py selecciona «Preferencias» y configura la carpeta donde está renpy_project, o copia renpy_project dentro de la carpeta de proyectos configurada.
+4. El proyecto seleccionable es renpy_project; su subcarpeta game contiene options.rpy, los .rpy y las imágenes.
+5. Abre el proyecto y pulsa «Launch Project». Para generar una distribución, usa «Build Distributions» en el Launcher.
+
+No se incluyen archivos de audio; el juego no los requiere. Los saves de Ren'Py y los del navegador son independientes.
+
+CONTROLES Y SISTEMAS
+- HTML: pulsa «Continuar» o la flecha para avanzar; escoge las opciones mostradas. HUD: Estado, Pistas y Cuaderno. Barra inferior: Historial, Guardar, Auto y Saltar.
+- Ren'Py: clic/Enter para avanzar; los menús muestran elecciones. La pantalla de diálogo incluye historial, guardado, auto, salto, pistas, estado y cuaderno.
+- La galería/archive muestra finales desbloqueados y pistas. Completar un final desbloquea New Game+ en la versión HTML; en Ren'Py, la partida nueva reconoce la persistencia de completado y del archivo de finales.
+- El capítulo 1 es el capítulo de apertura; al completarlo se abre la selección de rutas del capítulo 2, que permite resolver uno de los quince finales.
+
+AVISO DE CONTENIDO
+Misterio, muerte ficticia sugerida, duelo, presión social y tensión psicológica. No hay gore. El cuaderno y todos sus nombres, identidades, casos y eventos son ficticios. La historia no invita a identificar ni a dañar personas reales; las entradas se presentan como una simulación narrativa.
+
+LICENCIA Y REGENERACIÓN DE ARTE
+El código y los recursos de este proyecto se entregan como materiales originales de este paquete. No se incorporan personajes, marcas, escenarios ni historias de franquicias existentes. El script opcional tools_generate_art.py requiere Pillow y CairoSVG para regenerar el arte; no es necesario para jugar y no se incluye como dependencia del runtime.
